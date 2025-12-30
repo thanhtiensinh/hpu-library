@@ -78,7 +78,7 @@ function ManagerBlogs() {
             };
 
             // Use fetch directly to avoid axios serialization issues
-            const response = await fetch('http://localhost:3000/api/create-blog', {
+            const response = await fetch('https://hpu-library.onrender.com/api/create-blog', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

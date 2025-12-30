@@ -46,8 +46,8 @@ class PaymentsController {
             var requestId = partnerCode + new Date().getTime();
             var orderId = requestId;
             var orderInfo = `thanh toan ${cart._id}`; // nội dung giao dịch thanh toán
-            var redirectUrl = 'http://localhost:3000/api/payments/check-payment-momo'; // 8080
-            var ipnUrl = 'http://localhost:3000/api/payments/check-payment-momo';
+            var redirectUrl = 'https://hpu-library.onrender.com/api/payments/check-payment-momo'; // 8080
+            var ipnUrl = 'https://hpu-library.onrender.com/api/payments/check-payment-momo';
             // var ipnUrl = redirectUrl = "https://webhook.site/454e7b77-f177-4ece-8236-ddf1c26ba7f8";
             var amount = cart.totalPrice;
             var requestType = 'captureWallet';
@@ -122,7 +122,7 @@ class PaymentsController {
                 vnp_TxnRef: cart._id, //
                 vnp_OrderInfo: cart._id, //
                 vnp_OrderType: ProductCode.Other,
-                vnp_ReturnUrl: `http://localhost:3000/api/payments/check-payment-vnpay`, //
+                vnp_ReturnUrl: `https://hpu-library.onrender.com/api/payments/check-payment-vnpay`, //
                 vnp_Locale: VnpLocale.VN, // 'vn' hoặc 'en'
                 vnp_CreateDate: dateFormat(new Date()), // tùy chọn, mặc định là hiện tại
                 vnp_ExpireDate: dateFormat(tomorrow), // tùy chọn
