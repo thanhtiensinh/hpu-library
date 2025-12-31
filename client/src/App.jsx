@@ -3,10 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/HomePage';
 import Footer from './Components/Footer/Footer';
-
-// QUAN TRỌNG: Bạn cần import thêm các trang chính để web không bị trắng
-// Ví dụ: import Login from './Page/Login';
-// Ví dụ: import ManagerContact from './Page/Admin/Components/ManagerContact/ManagerContact';
+import Login from './Page/Login';
+// Thêm trang quản lý của bạn vào đây
+import ManagerContact from './Page/Admin/Components/ManagerContact/ManagerContact';
 
 function App() {
   return (
@@ -17,18 +16,17 @@ function App() {
 
       <main className="w-full flex justify-center mt-3">
         <Routes>
-          {/* Trang chủ */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
           
-          {/* Tự động sửa lỗi khi bị nhảy về index.html */}
+          {/* Thêm Route cho manager để không bị trắng trang */}
+          <Route path="/manager" element={<ManagerContact />} />
+
+          {/* Sửa lỗi tự nhảy về index.html */}
           <Route path="/index.html" element={<Navigate to="/" replace />} />
-
-          {/* Bạn hãy thêm các Route cho Login và Admin tại đây */}
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/manager" element={<ManagerContact />} /> */}
-
-          {/* Trang thông báo nếu vào nhầm link */}
-          <Route path="*" element={<div className="py-20 text-center">Trang web đang được tải hoặc không tồn tại...</div>} />
+          
+          {/* Bẫy tất cả các đường dẫn sai về trang chủ */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
